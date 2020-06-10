@@ -18,6 +18,7 @@ export interface IFlowChartCallbacks {
   onLinkMove: IOnLinkMove
   onLinkComplete: IOnLinkComplete
   onLinkCancel: IOnLinkCancel
+  onRemoveLink:IOnLinkCancel
   onPortPositionChange: IOnPortPositionChange
   onLinkMouseEnter: IOnLinkMouseEnter
   onLinkMouseLeave: IOnLinkMouseLeave
@@ -82,6 +83,7 @@ export const FlowChart = (props: IFlowChartProps) => {
       onLinkMouseEnter,
       onLinkMouseLeave,
       onLinkClick,
+      onRemoveLink,
       onCanvasClick,
       onDeleteKey,
       onNodeClick,
@@ -159,6 +161,7 @@ export const FlowChart = (props: IFlowChartProps) => {
             Component={Link}
             isSelected={isSelected}
             isHovered={isHovered}
+            onRemoveLink={onRemoveLink}
             fromNode={nodes[fromNodeId]}
             toNode={toNodeId ? nodes[toNodeId] : undefined}
             matrix={matrix}

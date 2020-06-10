@@ -3,12 +3,12 @@ import {
   IChart, identity, IOnCanvasClick,
   IOnCanvasDrop, IOnDeleteKey, IOnDragCanvas, IOnDragCanvasStop,
   IOnDragNode, IOnDragNodeStop, IOnLinkCancel, IOnLinkClick, IOnLinkComplete, IOnLinkMouseEnter, IOnLinkMouseLeave,
-  IOnLinkMove, IOnLinkStart,IOnNodeClick, IOnNodeDoubleClick, IOnNodeMouseEnter,
+  IOnLinkMove, IOnLinkStart, IOnNodeClick, IOnNodeDoubleClick, IOnNodeMouseEnter,
   IOnNodeMouseLeave, IOnNodeSizeChange, IOnPortPositionChange, IOnZoomCanvas, IStateCallback,
 } from '../'
 import { rotate } from './utils/rotate'
 
-function getOffset (config: any, data: any, zoom?: number) {
+function getOffset(config: any, data: any, zoom?: number) {
   let offset = { x: data.x, y: data.y }
   if (config && config.snapToGrid) {
     offset = {
@@ -145,6 +145,16 @@ export const onNodeMouseEnter: IStateCallback<IOnNodeMouseEnter> = ({ nodeId }) 
 export const onNodeMouseLeave: IStateCallback<IOnNodeMouseLeave> = ({ nodeId }) => (chart: IChart) => {
   if (chart.hovered.type === 'node' && chart.hovered.id === nodeId) {
     return { ...chart, hovered: {} }
+  }
+  return chart
+}
+
+export const onRemoveLink: IStateCallback<IOnLinkCancel> = ({ linkId }) => (chart: IChart) => {
+  if (linkId) {
+    delete chart.links[linkId]
+  }
+  else if (chart.selected) {
+    chart.selected = {}
   }
   return chart
 }

@@ -9,7 +9,7 @@ export const chartSimple: IChart = {
   nodes: {
     node1: {
       id: 'node1',
-      type: 'output-only',
+      type: 'JDBC',
       position: {
         x: 300,
         y: 100,
@@ -33,7 +33,7 @@ export const chartSimple: IChart = {
     },
     node2: {
       id: 'node2',
-      type: 'input-output',
+      type: 'Filter',
       position: {
         x: 300,
         y: 300,
@@ -51,7 +51,7 @@ export const chartSimple: IChart = {
     },
     node3: {
       id: 'node3',
-      type: 'input-output',
+      type: 'Selection',
       position: {
         x: 100,
         y: 600,
@@ -69,7 +69,7 @@ export const chartSimple: IChart = {
     },
     node4: {
       id: 'node4',
-      type: 'input-output',
+      type: 'Selection',
       position: {
         x: 500,
         y: 600,
